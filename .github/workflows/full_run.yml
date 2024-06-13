@@ -1,23 +1,18 @@
 name: full_run
 run-name: ${{ github.actor }} is running full python project
+
 on: [push]
+
 jobs:
-  run-python-project:
+  build_and_upload:
     runs-on: ubuntu-latest
     steps:
+      - name : Checkout repository
       - uses: actions/checkout@v4
+      - name : setup python
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - run: python -m pip install --upgrade pip
-      - run: pip install numpy pandas scikit-learn
-      - run: python src/main.py
-  upload-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - run: mkdir -p artifacts/
-      - run: echo hello > artifacts/world.txt
-      - uses: actions/checkout@v4
-        with:
-          name: data-artifact
-          path: artifacys/world.txt
+      - run : pip install numpy pandas scikit-learn
+      - run : python src/main.py
