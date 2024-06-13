@@ -1,5 +1,5 @@
 name: full_run
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is running full python project
 on: [push]
 jobs:
   check-bats-version:
