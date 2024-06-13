@@ -36,7 +36,7 @@ numerical_cols = [e for e in L.index if not (e in L[L].index)]
 # setup preprocessor
 preprocessor = Preprocessor(numerical_cols, categorical_cols)
 
-from xgboost import XBGClassifier
+from xgboost import XGBClassifier
 xgb_model = XGBClassifier(n_estimators=100)
 
 # define the pipeline
