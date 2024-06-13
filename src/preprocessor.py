@@ -13,7 +13,7 @@ categorical_transformer = Pipeline(steps=[
 ])
 
 # TODO: create preprocessor class that allows for strategy specification 
-def preprocessor (numerical_cols, categorical_cols):
+def Preprocessor (numerical_cols, categorical_cols):
   return ColumnTransformer(
     transformers = [
         ('num', numerical_transformer, numerical_cols), # need to define numerical_cols and categorical_cols
