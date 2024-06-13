@@ -24,4 +24,28 @@ from sklearn.model_selection import train_test_split
 
 train_X, valid_X, train_y, valid_y = train_test_split(X, y, test_size=0.2, train_size=0.8, random_state=0)
 
+# series descripting of columns are of dtype object
+L = (train_X.dtypes == 'object')
+
+# Obtain a list of all columns containing categorical variables in the training data
+categorical_cols = list(L[L].index)
+
+# Create a list of all columns containg numerical variables in the training data 
+numerical_cols = [e for e in L.index if not (e in L[L].index)]
+
+# setup preprocessor
+preprocessor = Preprocessor(numerical_cols, categorical_cols)
+
+from xgboost import XBGClassifier
+xgb_model = XGBClassifier(n_estimators=100)
+
+# define the pipeline
+pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('model', xgb_model)
+])
+
+# fit data (and preprocess automatically with the pipeline)
+pipeline.fit(train_X, train_y)
+
 print("Run Successful!\n")
