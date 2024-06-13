@@ -3,13 +3,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
 
-class Preprocessor:
-
-    def _init_(self, train_X):
-        self.train_X = train_X 
+def Preprocessor (train_X):
 
     # series descripting of columns are of dtype object
-    L = (self.train_X.dtypes == 'object')
+    L = (train_X.dtypes == 'object')
 
     # Obtain a list of all columns containing categorical variables in the training data
     categorical_cols = list(L[L].index)
@@ -26,11 +23,8 @@ class Preprocessor:
         ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
     ])
     
-    # TODO: create preprocessor class that allows for strategy specification 
-    def New (self, numerical_cols, categorical_cols):
-      return ColumnTransformer(
+    return ColumnTransformer(
         transformers = [
-            ('num', self.numerical_transformer, numerical_cols), # need to define numerical_cols and categorical_cols
-            ('cat', self.categorical_transformer, categorical_cols)
+            ('num', numerical_transformer, numerical_cols), # need to define numerical_cols and categorical_cols
+            ('cat', categorical_transformer, categorical_cols)
         ]
-    )
