@@ -7,12 +7,18 @@ jobs:
   build_and_upload:
     runs-on: ubuntu-latest
     steps:
-      - name : Checkout repository
       - uses: actions/checkout@v4
-      - name : setup python
-      - uses: actions/setup-python@v5
+      - name : build python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: python -m pip install --upgrade pip
-      - run : pip install numpy pandas scikit-learn
-      - run : python src/main.py
+      - name : Install dependencies and run
+        run: |  
+          python -m pip install --upgrade pip
+          pip install numpy pandas scikit-learn  
+          python src/main.py
+      - name : Upload to artifact
+        uses: actions/upload-artifacts@v4
+        with:
+          name: data_artifact
+          path: telco_data_head.csv
