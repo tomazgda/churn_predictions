@@ -15,7 +15,9 @@ jobs:
   upload-artifact:
     runs-on: ubuntu-latest
     steps:
+      - run: mkdir -p artifacts/
+      - run: echo hello > artifacts/world.txt
       - uses: actions/checkout@v4
         with:
           name: data-artifact
-          path: telco_data_head.csv
+          path: artifacys/world.txt
