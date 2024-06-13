@@ -9,7 +9,7 @@ class Preprocessor:
         self.train_X = train_X 
 
     # series descripting of columns are of dtype object
-    L = (train_X.dtypes == 'object')
+    L = (self.train_X.dtypes == 'object')
 
     # Obtain a list of all columns containing categorical variables in the training data
     categorical_cols = list(L[L].index)
