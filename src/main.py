@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # import preprocessor defined in preprocessor.py
-import preprocessor
+from preprocessor import *
 
 # read csv into dataframe
 data = pd.read_csv("telco_data.csv")
