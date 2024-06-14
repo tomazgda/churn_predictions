@@ -3,12 +3,9 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
-def clean_and_split(filename: str, features: list[str], test_size: float) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def clean_and_split(data: pd.DataFrame, features: list[str], test_size: float) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """reads a csv into a dataframe, removes rows with na targets, and splits data"""
     
-    # read csv into dataframe
-    data = pd.read_csv(filename)
-
     # remove rows with missing targets
     data_without_na = data.dropna(axis=0, subset=['Churn'], inplace=False)
 

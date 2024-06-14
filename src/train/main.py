@@ -15,9 +15,18 @@ from report import create_report
 
 def main() -> None:
 
-    # define training and validation dataframes 
-    train_X, valid_X, train_y, valid_y = clean_and_split(
-        filename = "data/telco_data.csv",
+    # read csv into a DataFrame
+    dataset = pd.read_csv("data/telco_data.csv", index_col=0)
+
+    # Split off data for scores later
+    hold_out, train_test = train_test_split(data, test_size = 0.1, random_state=0)
+
+    # save hold_out data to file
+    hold_out.to_csv("data/hold_out.csv")
+
+    # define training and testing dataframes 
+    train_X, test_X, train_y, test_y = clean_and_split(
+        data = hold_out,
         features = ["tenure", "MonthlyCharges", "Contract"],
         test_size = 0.3)
 
@@ -39,7 +48,7 @@ def main() -> None:
     pipeline.fit(train_X, train_y)
 
     # make some predictions
-    predictions = pipeline.predict(valid_X)
+    predictions = pipeline.predict(test_X)
 
     # generate a report
     report = create_report(
