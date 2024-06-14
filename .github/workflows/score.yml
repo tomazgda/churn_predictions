@@ -1,6 +1,7 @@
 name: score
 run-name: ${{ github.actor }} is generating scores
-on: [push]
+on: 
+    workflow_dispatch:
 
 jobs:
   score:
