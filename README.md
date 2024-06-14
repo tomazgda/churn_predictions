@@ -21,4 +21,4 @@ Right now the action builds a model, fits the training data, makes some predicti
 
 ## Todo
 - [ ] Seperate scores script from model building
-- [ ] Remake the process chart to reflect: run-once -> build mode & produce report, run-again -> log predictions
+- [ ] Remake the process chart to reflect: run-once -> build model & produce report, run-again -> log predictions
