@@ -23,7 +23,7 @@ def main() -> None:
     dataset = pd.read_csv("data/telco_data.csv", index_col=0)
 
     # Split off data for scores later
-    scoring_data, train_test = train_test_split(dataset, test_size = 0.1, random_state=0)
+    train_test, scoring_data = train_test_split(dataset, test_size = 0.1, random_state=0)
 
     # save holdout data to file: has all the features
     scoring_data.drop(['Churn'], axis=1, inplace=False).to_csv("data/scoring_data.csv")
