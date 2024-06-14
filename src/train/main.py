@@ -17,6 +17,7 @@ from utils import clean_and_split
 from report import create_report
 
 def main() -> None:
+    '''take a csv file and create a trained pipeline and a report of that pipeline's performance'''
 
     # read csv into a DataFrame
     dataset = pd.read_csv("data/telco_data.csv", index_col=0)
