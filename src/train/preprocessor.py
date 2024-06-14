@@ -1,3 +1,5 @@
+# preprocessor.py
+
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -5,8 +7,8 @@ from sklearn.preprocessing import OneHotEncoder
 
 import pandas as pd
 
-def create_preprocessor (train_X: pd.DataFrame) -> ColumnTransformer :
-    """Returns a preprocessor from a the training features dataset"""
+def create_preprocessor (train_X: pd.DataFrame) -> ColumnTransformer:
+    '''Returns a preprocessor from a the training features dataset'''
 
     # series description of columns are of dtype object
     L = (train_X.dtypes == 'object')

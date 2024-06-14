@@ -1,3 +1,5 @@
+# main.py
+
 from xgboost import XGBClassifier
 from sklearn.pipeline import Pipeline
 
@@ -20,20 +22,21 @@ def main() -> None:
     dataset = pd.read_csv("data/telco_data.csv", index_col=0)
 
     # Split off data for scores later
-    hold_out, train_test = train_test_split(dataset, test_size = 0.1, random_state=0)
+    scoring_data, train_test = train_test_split(dataset, test_size = 0.1, random_state=0)
 
     # save holdout data to file: has all the features
-    hold_out.drop(['Churn'], axis=1, inplace=False).to_csv("data/scoring_data.csv")
+    scoring_data.drop(['Churn'], axis=1, inplace=False).to_csv("data/scoring_data.csv")
 
     # define training and testing dataframes 
     train_X, test_X, train_y, test_y = clean_and_split(
-        data = hold_out,
+        data = train_test,
         features = ["tenure", "MonthlyCharges", "Contract"],
         test_size = 0.3)
 
     # setup preprocessor
     preprocessor = create_preprocessor(train_X = train_X)
 
+    # create the model
     xgb_model = XGBClassifier(n_estimators=100)
 
     # define the pipeline
@@ -59,6 +62,7 @@ def main() -> None:
         ]
     )
 
+    # save the report to file
     report.to_csv("report.csv")
 
     print("Run Successful!\n")
