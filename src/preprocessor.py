@@ -5,7 +5,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 import pandas as pd
 
-def Preprocessor (train_X: pd.DataFrame) -> ColumnTransformer :
+def create_preprocessor (train_X: pd.DataFrame) -> ColumnTransformer :
     """Returns a preprocessor from a the training features dataset"""
 
     # series description of columns are of dtype object

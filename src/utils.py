@@ -21,5 +21,5 @@ def clean_and_split(filename: str, features: list[str], test_size: float) -> tup
     X = data_without_na.drop(['Churn'], axis=1, inplace=False)[features]
 
     # seperature training from validation data
-    return train_test_split(X, y, test_size=0.2, train_size=0.8, random_state=0)
+    return train_test_split(X, y, test_size=test_size, random_state=0)
 
