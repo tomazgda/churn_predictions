@@ -42,11 +42,11 @@ def main() -> None:
         ('model', xgb_model)
     ])
 
-    # save the pipeline
-    joblib.dump(pipeline, 'pipelines/pipeline.joblib')
-
     # fit data (and preprocess automatically with the pipeline)
     pipeline.fit(train_X, train_y)
+
+    # save the pipeline
+    joblib.dump(pipeline, 'pipelines/pipeline.joblib')
 
     # make some predictions
     predictions = pipeline.predict(test_X)
