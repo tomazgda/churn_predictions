@@ -63,7 +63,7 @@ def main() -> None:
     )
 
     # save the report to file
-    report.to_csv("report.csv")
+    report.to_csv("data/report.csv")
 
     print("Run Successful!\n")
 
