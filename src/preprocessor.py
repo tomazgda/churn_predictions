@@ -3,6 +3,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
 
+import pandas as pd
+
 def Preprocessor (train_X: pd.DataFrame) -> ColumnTransformer :
     """Returns a preprocessor from a the training features dataset"""
 
