@@ -16,7 +16,7 @@ def main() -> None:
     # Generate scores
     scores = pipeline.predict(scoring_data)
 
-    # write the scores as a DataFrame, to a csv file
+    # write the scores as a DataFrame to a csv file
     pd.DataFrame( {"scores": scores}, index = scoring_data.index ).to_csv('data/scores.csv')
 
 if __name__ == "__main__":
