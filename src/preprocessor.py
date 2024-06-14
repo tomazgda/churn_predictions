@@ -3,9 +3,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
 
-def Preprocessor (train_X):
+def Preprocessor (train_X: pd.DataFrame) -> ColumnTransformer :
+    """Returns a preprocessor from a the training features dataset"""
 
-    # series descripting of columns are of dtype object
+    # series description of columns are of dtype object
     L = (train_X.dtypes == 'object')
 
     # Obtain a list of all columns containing categorical variables in the training data
