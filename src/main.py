@@ -3,6 +3,8 @@ from sklearn.pipeline import Pipeline
 
 from sklearn.metrics import mean_absolute_error, accuracy_score
 
+import joblib
+
 import numpy as np
 import pandas as pd
 
@@ -27,6 +29,9 @@ pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('model', xgb_model)
 ])
+
+# save the pipeline
+joblib.dump(pipeline, '../pipelines/pipeline.joblib')
 
 # fit data (and preprocess automatically with the pipeline)
 pipeline.fit(train_X, train_y)
