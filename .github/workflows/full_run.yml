@@ -31,4 +31,4 @@ jobs:
       - name: push changes
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch ${{ github.ref }}
+          branch: ${{ github.ref }}
