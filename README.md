@@ -1,4 +1,6 @@
 # churn_predictions
+
+## Overview
 A project for my work experience at Sky UK.
 
 Dataset used is the Telco Customer Churn dataset:
@@ -16,3 +18,7 @@ Right now the action builds a model, fits the training data, makes some predicti
 
 - the training data is located under data/ in the repository 
 - the report is exposed as a Github Actions artefact labeled 'model_report'
+
+## Todo
+- [ ] Seperate scores script from model building
+- [ ] Remake the process chart to reflect: run-once -> build mode & produce report, run-again -> log predictions
