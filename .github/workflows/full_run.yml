@@ -20,5 +20,5 @@ jobs:
       - name : Upload to artifact
         uses: actions/upload-artifact@v4
         with:
-          name: data_artifact
+          name: model_report
           path: report.csv
