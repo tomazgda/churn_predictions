@@ -1,6 +1,6 @@
 import pandas as pd
 
-def create_report(score_pairs: list[tuple(str, float | int)]) -> pd.DataFrame:
+def create_report(score_pairs: list[tuple[str, float | int]]) -> pd.DataFrame:
     """run some metrics and list them in a dataframe"""
 
     report = pd.DataFrame(
