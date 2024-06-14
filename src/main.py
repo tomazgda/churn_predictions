@@ -7,6 +7,7 @@ import pandas as pd
 # imports from within the project
 from preprocessor import create_preprocessor
 from utils import clean_and_split
+from report import create_report
 
 # define training and validation dataframes 
 train_X, valid_X, train_y, valid_y = clean_and_split(
@@ -27,5 +28,9 @@ pipeline = Pipeline(steps=[
 
 # fit data (and preprocess automatically with the pipeline)
 pipeline.fit(train_X, train_y)
+
+report = create_report(
+    score_pairs = list("mean_absolute_error", 5.0)
+)
 
 print("Run Successful!\n")
