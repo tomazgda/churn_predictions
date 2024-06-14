@@ -7,7 +7,7 @@ import logging
 def main() -> None:
 
     # load data to be scored
-    scoring_data = pd.read_csv('data/scoring_data.csv')
+    scoring_data = pd.read_csv('data/scoring_data.csv', index_col=0)
 
     # load pipeline
     pipeline = joblib.load('pipelines/pipeline.joblib')
