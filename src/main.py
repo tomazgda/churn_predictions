@@ -31,7 +31,7 @@ pipeline = Pipeline(steps=[
 ])
 
 # save the pipeline
-joblib.dump(pipeline, '../pipelines/pipeline.joblib')
+joblib.dump(pipeline, 'pipelines/pipeline.joblib')
 
 # fit data (and preprocess automatically with the pipeline)
 pipeline.fit(train_X, train_y)
