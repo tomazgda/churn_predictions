@@ -8,4 +8,5 @@ Built with python, [scikit-learn](https://scikit-learn.org/stable/index.html) an
 
 ## Aim
 The goal is to be able to specify some training data, and data without targets ('Real' data), and have the program output its predictions for the real data as well as some scores in the form of a report on its performance across several metrics.
+
 ![Process](process.png)
