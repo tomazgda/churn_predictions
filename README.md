@@ -22,5 +22,5 @@ Right now the action builds a model, fits the training data, makes some predicti
 - the report is exposed as a Github Actions artefact labeled 'model_report'
 
 ## Todo
-- [ ] Seperate scores script from model building
+- [X] Seperate scores script from model building
 - [ ] Remake the process chart to reflect: run-once -> build model & produce report, run-again -> log predictions
