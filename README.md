@@ -8,6 +8,8 @@ https://www.kaggle.com/datasets/blastchar/telco-customer-churn.
 
 Built with python, [scikit-learn](https://scikit-learn.org/stable/index.html) and [pandas](https://pandas.pydata.org/).
 
+Note: there are so many commits because I didn't set up a local building environment - everything was done through github.
+
 ## Goal
 The goal is to be able to input some training data, and data without targets ('New' data), and output predictions for the new data as well as scores in the form of a report on model performance.
 
