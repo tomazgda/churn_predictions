@@ -24,3 +24,7 @@ Right now the action builds a model, fits the training data, makes some predicti
 ## Todo
 - [X] Seperate scores script from model building
 - [ ] Remake the process chart to reflect: run-once -> build model & produce report, run-again -> log predictions
+- [ ] Flush out the report
+- [ ] Get score.py to produce scores for all data under a new dir 'scoring_data' with corresponding file names
+- [ ] Improve on parameter and feature selection
+- [ ] Add some charts
