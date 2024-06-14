@@ -54,8 +54,8 @@ def main() -> None:
     # generate a report
     report = create_report(
         score_pairs = [
-            ("mae", mean_absolute_error(valid_y, predictions)),
-            ("accuracy", accuracy_score(valid_y, predictions))
+            ("mae", mean_absolute_error(test_y, predictions)),
+            ("accuracy", accuracy_score(test_y, predictions))
         ]
     )
 
