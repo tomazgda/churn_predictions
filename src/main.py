@@ -42,8 +42,6 @@ report = create_report(
     ]
 )
 
-predictions.index = valid_X.index
-predictions.to_csv("predictions.csv") # change for predictions
 report.to_csv("report.csv")
 
 print("Run Successful!\n")
