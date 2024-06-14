@@ -1,4 +1,4 @@
-name: full_run
+name: build_pipeline
 run-name: ${{ github.actor }} is running full python project
 
 on: [push]
