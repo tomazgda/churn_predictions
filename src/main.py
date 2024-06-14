@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from xgboost import XGBClassifier
+from sklearn.pipeline import Pipeline
 
 # import preprocessor defined in preprocessor.py
 from preprocessor import Preprocessor
