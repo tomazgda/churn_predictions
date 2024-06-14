@@ -20,7 +20,7 @@ def main() -> None:
     dataset = pd.read_csv("data/telco_data.csv", index_col=0)
 
     # Split off data for scores later
-    hold_out, train_test = train_test_split(data, test_size = 0.1, random_state=0)
+    hold_out, train_test = train_test_split(dataset, test_size = 0.1, random_state=0)
 
     # save hold_out data to file
     hold_out.to_csv("data/hold_out.csv")
