@@ -17,8 +17,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn xgboost
           python src/main.py
-      - name : Upload to artifact
+      - name : Upload report to artifact
         uses: actions/upload-artifact@v4
         with:
           name: model_report
           path: report.csv
+      - name : Upload predictions to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: predictions
+          path: predictions.csv

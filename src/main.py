@@ -13,7 +13,7 @@ from report import create_report
 
 # define training and validation dataframes 
 train_X, valid_X, train_y, valid_y = clean_and_split(
-    filename = "telco_data.csv",
+    filename = "data/telco_data.csv",
     features = ["tenure", "MonthlyCharges", "Contract"],
     test_size = 0.3)
 
@@ -42,6 +42,7 @@ report = create_report(
     ]
 )
 
+predictions.to_csv("predictions.csv")
 report.to_csv("report.csv")
 
 print("Run Successful!\n")
