@@ -2,6 +2,7 @@
 
 import pandas as pd
 import joblib
+import logging
 
 def main() -> None:
 
@@ -12,7 +13,7 @@ def main() -> None:
     pipeline = joblib.load('pipelines/pipeline.joblib')
 
     # Generate scores
-    scores = model.predict(scoring_data)
+    scores = pipeline.predict(scoring_data)
     
     # Log scores -- From Matt's Post https://towardsdatascience.com/deploy-a-lightgbm-ml-model-with-github-actions-781c094acfa3
     logging.basicConfig(level=logging.INFO)

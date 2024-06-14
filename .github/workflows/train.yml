@@ -1,9 +1,9 @@
-name: build_pipeline
-run-name: ${{ github.actor }} is building the pipeline
+name: train
+run-name: ${{ github.actor }} is training the model
 on: [push]
 
 jobs:
-  build_and_upload:
+  build_and_report:
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,0 +1,32 @@
+name: score
+run-name: ${{ github.actor }} is generating scores
+on: [push]
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name : setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name : Install dependencies and run
+        run: |  
+          python -m pip install --upgrade pip
+          pip install numpy pandas scikit-learn xgboost joblib
+          python src/score/main.py
+      - name: commit files
+        run: | 
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+          git add -A 
+          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+      - name: push changes
+        uses: ad-m/github-push-action@master
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
