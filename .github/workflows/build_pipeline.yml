@@ -1,6 +1,5 @@
 name: build_pipeline
-run-name: ${{ github.actor }} is running full python project
-
+run-name: ${{ github.actor }} is building the pipeline
 on: [push]
 
 jobs:
