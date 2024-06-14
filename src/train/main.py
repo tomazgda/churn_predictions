@@ -22,8 +22,8 @@ def main() -> None:
     # Split off data for scores later
     hold_out, train_test = train_test_split(dataset, test_size = 0.1, random_state=0)
 
-    # save hold_out data to file
-    hold_out.to_csv("data/hold_out.csv")
+    # save holdout data to file: has all the features
+    hold_out.drop(['Churn'], axis=1, inplace=False).to_csv("data/scoring_data.csv")
 
     # define training and testing dataframes 
     train_X, test_X, train_y, test_y = clean_and_split(
