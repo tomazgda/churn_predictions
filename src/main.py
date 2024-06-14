@@ -30,7 +30,7 @@ pipeline = Pipeline(steps=[
 pipeline.fit(train_X, train_y)
 
 report = create_report(
-    score_pairs = list("mean_absolute_error", 5.0)
+    score_pairs = list(("mean_absolute_error", 5.0))
 )
 
 print("Run Successful!\n")
