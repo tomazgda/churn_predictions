@@ -26,8 +26,8 @@ jobs:
         run: | 
         git config --local user.email "actions@github.com"
         git config --local user.name "Github Actions"
-        git add -A (git commit -a -m "updated logs" --allow-empty)
-        git diff-index --quiet HEAD || 
+        git add -A 
+        git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
       - name: push changes
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
