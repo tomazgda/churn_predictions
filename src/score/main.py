@@ -14,15 +14,9 @@ def main() -> None:
 
     # Generate scores
     scores = pipeline.predict(scoring_data)
-    
-    # Log scores -- From Matt's Post https://towardsdatascience.com/deploy-a-lightgbm-ml-model-with-github-actions-781c094acfa3
-    logging.basicConfig(level=logging.INFO)
-    logger = logging.getLogger(__name__)
-    f_handler = logging.FileHandler('data/scores.log')
-    f_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    f_handler.setFormatter(f_format)
-    logger.addHandler(f_handler)
-    logger.info(f'Scores: {scores}')
+
+    # write the scores as a DataFrame, to a csv file
+    pd.DataFrame( {"scores", scores}, index = scoring_data.index ).to_scv('data/scores.csv')
 
 if __name__ == "__main__":
     main()
