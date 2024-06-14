@@ -11,7 +11,8 @@ from preprocessor import Preprocessor
 from utils import clean_and_split
 
 # define training and validation dataframes 
-train_X, valid_X, train_y, valid_y = clean_and_split("telco_data.csv")
+features = ["tenure", "MonthlyCharges", "Contract"]
+train_X, valid_X, train_y, valid_y = clean_and_split("telco_data.csv", features)
 
 # setup preprocessor
 preprocessor = Preprocessor(train_X)

@@ -3,7 +3,7 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
-def clean_and_split(filename: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def clean_and_split(filename: str, features: list[str], test_size: float) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """reads a csv into a dataframe, removes rows with na targets, and splits data"""
     # read csv into dataframe
     data = pd.read_csv(filename)
@@ -18,7 +18,7 @@ def clean_and_split(filename: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataF
     y = np.where(data_without_na['Churn'] == 'Yes', 1, 0)
 
     # drop target from whole data set, return features which will be called X
-    X = data_without_na.drop(['Churn'], axis=1, inplace=False)[["tenure", "MonthlyCharges", "Contract"]]
+    X = data_without_na.drop(['Churn'], axis=1, inplace=False)[features]
 
     # seperature training from validation data
     return train_test_split(X, y, test_size=0.2, train_size=0.8, random_state=0)
