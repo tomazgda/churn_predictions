@@ -6,7 +6,7 @@ Predicting churn with the [Telco Customer Chrun dataset](https://www.kaggle.com/
 Built with python, [scikit-learn](https://scikit-learn.org/stable/index.html) and [pandas](https://pandas.pydata.org/).
 
 ## Overview
-![Process](process-diagram.png)
+![Process](flowchart.png)
 
 ## Todo
 - [X] Seperate scores script from model building
