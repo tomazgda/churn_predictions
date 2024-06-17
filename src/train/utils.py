@@ -28,6 +28,8 @@ def clean_and_split(data: pd.DataFrame, features: list[str], test_size: float) -
     # seperature training from validation data
     return train_test_split(X, y, test_size=test_size, random_state=0)
 
+# wrapper feature selection evaluates a new model for every feature combination
+# the computation cost therefore is Order n^2
 def wrapper_find_best_features(pipeline: Pipeline, X: pd.DataFrame, y: pd.Series) -> np.ndarray:
     ''' Uses wrapper feature selection to find the feature selection with the highest accuracy'''
 
@@ -69,3 +71,8 @@ def wrapper_find_best_features(pipeline: Pipeline, X: pd.DataFrame, y: pd.Series
             best_subset, best_score = ix, result
     
         return best_subset
+    
+# filter feature selection uses statistical techniques to evaluate the relationship between each feature and the target
+def filter_find_best_features():
+    '''Uses filter feature selection to find the feature selection with the highest accuracy'''
+    pass
