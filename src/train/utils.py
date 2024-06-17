@@ -6,6 +6,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
+from itertools import product
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.model_selection import cross_val_score
+from sklearn.tree import DecisionTreeClassifier
+
+from sklearn.preprocessing import OneHotEncoder
+
 def clean_and_split(data: pd.DataFrame, features: list[str], test_size: float) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     '''reads a csv into a dataframe, removes rows with na targets, and splits data'''
     
@@ -25,7 +32,7 @@ def wrapper_find_best_features(pipeline: Pipeline, X: pd.DataFrame, y: pd.Series
     ''' Uses wrapper feature selection to find the feature selection with the highest accuracy'''
 
     # determine the number of columns
-    _cols = X.shape[1] # 5
+    n_cols = X.shape[1] # 5
     best_subset, best_score = None, 0.0
 
     # enumerate all combinations of input features
@@ -51,7 +58,7 @@ def wrapper_find_best_features(pipeline: Pipeline, X: pd.DataFrame, y: pd.Series
         cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state =1)
 
         # evaluate model
-        scores = cross_val_score(model, cleaned_X, y, scoring='accuracy', cv=cv, n_jobs=1)
+        scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=1)
     
         # summarise scores
         result = np.mean(scores)
