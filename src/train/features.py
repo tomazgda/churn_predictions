@@ -92,7 +92,7 @@ def objective(X: pd.DataFrame, y: pd.DataFrame, subset: np.ndarray) -> tuple[flo
     
     return result, ix
 
-def mutate(solution: np.ndarray, p_mutate: float) -> np.ndarry:
+def mutate(solution: np.ndarray, p_mutate: float) -> np.ndarray:
     '''makes a random alteration to a given feature subset, and returns the new subset'''
     # make a copy
     child = solution.copy()
