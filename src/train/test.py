@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 # load data
-df = pd.read_csv("data/telco.csv").dropna()
+df = pd.read_csv("data/telco_data.csv").dropna()
 
 # split target from features
 y = np.where(df['Churn'] == 'Yes', 1, 0)
