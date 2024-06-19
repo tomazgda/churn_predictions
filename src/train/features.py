@@ -63,7 +63,8 @@ def wrapper_find_best_features(pipeline: Pipeline, X: pd.DataFrame, y: pd.Series
         return best_subset
 
 
-def objective(X: pd.DataFrame, y: pd.DataFrame, subset: np.ndarray) -> tuple[float, list]:
+# note sure of the type of model 
+def objective(X: pd.DataFrame, y: pd.DataFrame, subset: np.ndarray, model) -> tuple[float, list]:
     '''evaluates the accuracy of a given feautre subset'''
     # convert into column indexes
     ix = [i for i, x in enumerate(subset) if x]
@@ -76,12 +77,12 @@ def objective(X: pd.DataFrame, y: pd.DataFrame, subset: np.ndarray) -> tuple[flo
     X_new = X.iloc[:, ix] 
     
     # create a preprocessor
-    preprocessor = create_preprocessor(X_new, subset)
+    preprocessor = create_preprocessor(X_new)
     
     # create a pipeline
     pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
-        ('model', RandomForestClassifier(n_estimators=100))
+        ('model', model)
     ])
     
     # evaluate model
@@ -104,7 +105,7 @@ def mutate(solution: np.ndarray, p_mutate: float) -> np.ndarray:
             child[i] = not child[i]
     return child
 
-def hillclimbing(X, y, objective, n_iter, p_mutate):
+def hillclimbing(X: pd.DataFrame, y: pd.DataFrame, n_iter: float, p_mutate: float, model) -> tuple[np.ndarray, float]:
     '''
     starts with an inital feature subset
     for [n_iter]
@@ -116,7 +117,7 @@ def hillclimbing(X, y, objective, n_iter, p_mutate):
     # generate an initial point
     solution = np.random.choice([True, False], size=X.shape[1])    
     # evaluate the initial point
-    solution_eval, ix = objective(X,y, solution)
+    solution_eval, ix = objective(X,y, solution, model)
     
     # run the hill climb
     for i in range(n_iter):
@@ -124,7 +125,7 @@ def hillclimbing(X, y, objective, n_iter, p_mutate):
         candidate = mutate(solution, p_mutate)
         
         # evaluate candidate point
-        candidate_eval, ix = objective(X, y, candidate)
+        candidate_eval, ix = objective(X, y, candidate, model)
         
         # check if we should keep the new point
         if candidate_eval >= solution_eval:
