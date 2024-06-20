@@ -7,6 +7,13 @@ from sklearn.model_selection import RepeatedStratifiedKFold
 from preprocessor import create_preprocessor
 from features import objective, mutate, hillclimbing, filter_find_best_features
 
+from preprocessor import create_preprocessor
+from sklearn.pipeline import Pipeline
+
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import cross_val_score
+
 import numpy as np
 import pandas as pd
 
@@ -24,7 +31,7 @@ model = RandomForestClassifier(n_estimators=100)
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 
 # begin feature selection
-n_iter = 5 # TODO Increase number
+n_iter = 1 # TODO Increase number
 p_mut = 10.0 / 100.0
 subset,score = hillclimbing(X, y, n_iter, p_mut, model)
 
@@ -35,6 +42,16 @@ ix = [i for i, x in enumerate(subset) if x]
 print('Done!')
 print('Best: f(%d) = %f' % (len(ix), score))
 
+# fit a new pipeline with the subset
+
+# create a preprocessor
+preprocessor = create_preprocessor(X.iloc[:, ix])
+    
+# create a pipeline
+pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('model', model)
+])
+
 # success message
 print("Testing Successful!")
-
